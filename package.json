@@ -1,0 +1,20 @@
+{
+    "name": "groke",
+    "author": "Janne Kuuskeri",
+    "dependencies": ["narwhal", "jack", "mok"],
+    "mappings": {
+        "narwhal": "",
+        "jack": "",
+        "mok": ""
+    },
+    "contributors": [],
+    "keywords": [
+        "rpc",
+        "rest",
+        "jack",
+        "middleware"
+    ],
+    "githubName": "groke",
+    "location": "",
+    "lib": ["lib", "test"]
+}
