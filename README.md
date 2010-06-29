@@ -29,9 +29,9 @@ server. Client application can thus make invocations like:
     f.flush();
     f.close();
 
-This would translate into series of HTTP POSTs to /file/open, 
-/objec/{obj-id}/write, /objec/{obj-id}/flush and /objec/{obj-id}/close 
-resources.
+This would translate into series of HTTP POSTs to /file/open,
+/object/{obj-id}/write, /object/{obj-id}/flush and
+/object/{obj-id}/close resources.
 
 When a client side application (a .js file) is originally loaded into
 the browser, the Groke server intercepts the request and performs
