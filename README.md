@@ -10,7 +10,7 @@ the client wants to use services offered by the server. The Groke
 server exposes all the modules and functions as a hierarchy of
 resources. Such as:
 
-  /module/function
+    /module/function
 
 The client can then POST any parameters (JSON encoded) into that
 resource and the Groke server will execute the function and return the
@@ -23,7 +23,8 @@ details and also stubbing of the interfaces returned by the
 server. Client application can thus make invocations like:
 
     var file = require("file");
-    var f = file.open("myfile.txt", "w");   // implementation of 'f' stays on server
+    // implementation of 'f' stays on server
+    var f = file.open("myfile.txt", "w");
     f.write("hello groke");
     f.flush();
     f.close();
