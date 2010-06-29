@@ -22,11 +22,11 @@ A thin client side wrapper automatically handles the networking
 details and also stubbing of the interfaces returned by the
 server. Client application can thus make invocations like:
 
-  var file = require("file");
-  var f = file.open("myfile.txt", "w");   // implementation of 'f' stays on server
-  f.write("hello groke");
-  f.flush();
-  f.close();
+    var file = require("file");
+    var f = file.open("myfile.txt", "w");   // implementation of 'f' stays on server
+    f.write("hello groke");
+    f.flush();
+    f.close();
 
 This would translate into series of HTTP POSTs to /file/open, 
 /objec/{obj-id}/write, /objec/{obj-id}/flush and /objec/{obj-id}/close 
@@ -47,10 +47,10 @@ Installation
 Clone the Groke source under narwhal/packages and add symlink to
 narwhal/bin.
 
-  cd narwhal/packages
-  git clone ...
-  cd ../bin
-  ln -s ../packages/groke/bin/groke
+    cd narwhal/packages
+    git clone ...
+    cd ../bin
+    ln -s ../packages/groke/bin/groke
 
 
 
