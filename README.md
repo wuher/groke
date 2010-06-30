@@ -106,6 +106,7 @@ Todo
 - make client side wrapper cacheable
 
 
+
 REST Discussion
 ===============
 
@@ -141,10 +142,10 @@ resources exposed by the platform.
        Functions provided by modules.
     </td>
     <td>
-       /groke/module/&lt;module&gt;/<function>
+       `/groke/module/&lt;module&gt;/<function>`
     </td>
     <td>
-       /groke/module/file/list
+       `/groke/module/file/list`
     </td>
   </tr>
   <tr>
@@ -152,10 +153,10 @@ resources exposed by the platform.
       “Constructor” functions, i.e. functions invoked with the new operator.
     </td>
     <td>
-      /groke/ctor/&lt;module&gt;/<function>
+      `/groke/ctor/&lt;module&gt;/<function>`
     </td>
     <td>
-      /groke/ctor/file/File
+      `/groke/ctor/file/File`
     </td>
   </tr>
   <tr>
@@ -163,10 +164,10 @@ resources exposed by the platform.
       Objects that are exposed as a return value of a function invocation.
     </td>
     <td>
-      /groke/obj/&lt;object-id&gt;/<property>
+      `/groke/obj/&lt;object-id&gt;/<property>`
     </td>
     <td>
-      /groke/obj/8327/write
+      `/groke/obj/8327/write`
     </td>
   </tr>
   <tr>
@@ -175,10 +176,10 @@ resources exposed by the platform.
       This is analogous with the previous case.
     </td>
     <td>
-      /groke/func/&lt;function-id&gt;
+      `/groke/func/&lt;function-id&gt;`
     </td>
     <td>
-      /groke/func/9284
+      `/groke/func/9284`
     </td>
   </tr>
 </table>
@@ -199,7 +200,7 @@ or less a side effect of a function invocation issued with HTTP's POST
 method.
 
 Another controversy is presenting functions as resources. Albeit, the
-REST guidelines define that a resource can be anything, we do realize
+REST guidelines define that a resource can be anything, I do realize
 that presenting functions as resources makes the interface seem more
 like an RPC type of service. In the REST world it is highly
 discouraged to use verbs as the names of resources and this is what
@@ -209,9 +210,8 @@ unknown to the platform when the system starts, everything is exposed
 dynamically and therefore also the names of the resources are chosen
 by the programmers providing the operations.
 
-Because of these conflicting aspects we feel that it is not justified
-to call the interface truly RESTful but something that is inspired by
-REST.
+Because of these conflicting aspects I feel that it is not justified
+to call the interface RESTful but something that is inspired by REST.
 
 
 
