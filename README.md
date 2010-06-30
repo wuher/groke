@@ -42,6 +42,45 @@ HTTP requests to resources exposed by the server.
 
 
 
+History
+=======
+
+Groke started out as a research project in early 2008 to investigate
+how to implement a platform for loading JavaScript applications into
+the browser with minimum effort. It was first created to be used in
+conjunction with the [Sun Labs Lively Kernel][1] and the [Lively][2]
+(a research [group][3] that i'm part of) in general.
+
+During its short lifecycly, Groke has already gone through several
+generations and rewrites. The firts version was built on top of the
+[Phobos][4] project and had many Lively specific feature in it. The
+next version was a bit more primitive in that it used Rhino and
+embedded Jetty was started from the JavaScript manually with
+appropriate request handlers. This version also supported various
+Comet protocols making the platform bi-directional and collaborative.
+This version was completed around the same time the CommonJS group was
+emerged.
+
+After following the CommonJS group for awhile I started to port the
+platform to conform to that spec which wasn't actually too hard as I
+had already implemented very similar module system in my previous
+version of the platform. The hardest part was throwing away all that
+code that was now part of the narwhal platform (only better tested and
+with more features) :) In the third version, the idea of presenting
+all the modules and function as hierarcy of resources was born. I
+fought to overcome the REST-RPC mismatch to great extent but
+eventually ended up with a compromise with which i wasn't too happy
+with.
+
+The third generation was free from all the Lively specific stuff but
+it was still using manually embedded Jetty so it was time to move away
+from that and employ Jack (loads of ugly code thrown away). Jack and
+JSGI have a really nice API for implementing middleware components and
+this was the major point of refactoring in the fourth version of
+Groke. Also, the REST approach was re-though and implemented.
+
+
+
 Installation
 ============
 
@@ -49,7 +88,7 @@ Clone the Groke source under narwhal/packages and add symlink to
 narwhal/bin.
 
     cd narwhal/packages
-    git clone ...
+    git clone http://github.com/wuher/groke.git
     cd ../bin
     ln -s ../packages/groke/bin/groke
 
@@ -65,3 +104,84 @@ Todo
 - proper XMLHttpRequest
 - tests are not working
 - make client side wrapper cacheable
+
+
+REST Discussion
+===============
+
+By default, the server side of the platform exposes all of its modules
+and their exposed variables (may they be functions, objects or
+properties) through a resource oriented interface. That is, the module
+hierarchy is simply turned into a hierarchy of resources. For example,
+the \texttt{list} function of the \texttt{file} module would respond
+to resource name \texttt{/file/list}. In order for a client to
+actually invoke this function, it needs to send an HTTP POST request
+to that URL with all the necessary parameters encoded as a JSON string
+in the body of the request. At the time of writing, the platform also
+has limited support for exposing objects and anonymous functions that
+may be created dynamically as part of return values from various
+operations. Table \ref{tbl:urls} summarizes the different types of
+resources exposed by the platform.
+
+
+<table>
+  <tr>
+    <th>
+      Resource type
+    </th>
+    <th>
+      URL scheme
+    </th>
+    <th>
+      Example
+    </th>
+  </tr>
+  <tr>
+    <td>
+       Functions provided by modules.
+    </td>
+    <td>
+       /groke/module/ <module>/<function>
+    </td>
+    <td>
+       /groke/module/ file/list
+    </td>
+  </tr>
+</table>
+
+
+
+The interface supports HTTP POST method only. Surely, this seems
+like a violation to the rules of REST. However, the platform cannot
+have any understanding about the modules and functions it exposes; it
+only knows that it serves a set of operations as resources that
+clients may invoke. Furthermore, these operations may require input
+parameters which, by REST convention, are POSTed to these
+operations. Modules and functions as resources also have a static
+nature in that they cannot be explicitly created, replaced or deleted
+using the methods of HTTP. Although, as suggested by the Table
+\ref{tbl:urls}, new objects and functions can be created and exposed
+dynamically but it is always more or less a side effect of a function
+invocation issued with HTTP's POST method.
+
+Another controversy is presenting functions as resources. Albeit, the
+REST guidelines define that a resource can be anything, we do realize
+that presenting functions as resources makes the interface seem more
+like an RPC type of service. In the REST world it is highly
+discouraged to use verbs as the names of resources and this is what
+inevitably happens when exposing functions as resources. On the other
+hand this is not the platform's choise, the names of the resources are
+unknown to the platform when the system starts, everything is exposed
+dynamically and therefore also the names of the resources are chosen
+by the programmers providing the operations.
+
+Because of these conflicting aspects we feel that it is not justified
+to call the interface truly RESTful but something that is inspired by
+REST.
+
+
+
+[1]:http://labs.oracle.com/projects/lively/
+[2]:http://lively.cs.tut.fi/
+[3]:http://lively.cs.tut.fi/people.html
+[4]:https://phobos.dev.java.net/
