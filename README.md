@@ -125,7 +125,7 @@ operations. Following table summarizes the different types of
 resources exposed by the platform.
 
 
-<table>
+<table width="80%">
   <tr>
     <th>
       Resource type
