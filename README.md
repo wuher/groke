@@ -42,6 +42,19 @@ HTTP requests to resources exposed by the server.
 
 
 
+Installation
+============
+
+Clone the Groke source under narwhal/packages and add symlink to
+narwhal/bin.
+
+    cd narwhal/packages
+    git clone http://github.com/wuher/groke.git
+    cd ../bin
+    ln -s ../packages/groke/bin/groke
+
+
+
 Todo
 ====
 
@@ -92,19 +105,6 @@ away). Jack and JSGI have a really nice API for implementing
 middleware components and this was the major point of refactoring in
 the fourth version of Groke. Also, the REST approach was re-though and
 implemented.
-
-
-
-Installation
-============
-
-Clone the Groke source under narwhal/packages and add symlink to
-narwhal/bin.
-
-    cd narwhal/packages
-    git clone http://github.com/wuher/groke.git
-    cd ../bin
-    ln -s ../packages/groke/bin/groke
 
 
 
