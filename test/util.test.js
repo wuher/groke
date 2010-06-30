@@ -33,6 +33,21 @@ nutil.forEachApply(
     });
 
 
+nutil.forEachApply(
+    [
+        ["", ["", ""]]
+        , ["func", ["", "func"]]
+        , ["module/func", ["module", "func"]]
+        , ["moduleA/moduleB/func", ["moduleA/moduleB", "func"]]
+        , ["moduleA/moduleB/moduleC/func", ["moduleA/moduleB/moduleC", "func"]]
+    ],
+    function (given, expected) {
+        exports["testUri2ModAndFunc: " + given] = function () {
+            assert.isSame(expected, util.uri2modAndFunc(given));
+        };
+    });
+
+
 if (require.main == module.id) {
     require("test/runner").run(exports);
 }
