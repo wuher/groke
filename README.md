@@ -113,8 +113,8 @@ By default, the server side of the platform exposes all of its modules
 and their exposed variables (may they be functions, objects or
 properties) through a resource oriented interface. That is, the module
 hierarchy is simply turned into a hierarchy of resources. For example,
-the \texttt{list} function of the \texttt{file} module would respond
-to resource name \texttt{/file/list}. In order for a client to
+the `list` function of the `file` module would respond
+to resource name `file/list`. In order for a client to
 actually invoke this function, it needs to send an HTTP POST request
 to that URL with all the necessary parameters encoded as a JSON string
 in the body of the request. At the time of writing, the platform also
@@ -141,7 +141,7 @@ resources exposed by the platform.
        Functions provided by modules.
     </td>
     <td>
-       /groke/module/<module>/<function>
+       /groke/module/&lt;module&gt;/<function>
     </td>
     <td>
        /groke/module/file/list
@@ -152,7 +152,7 @@ resources exposed by the platform.
       “Constructor” functions, i.e. functions invoked with the new operator.
     </td>
     <td>
-      /groke/ctor/<module>/<function>
+      /groke/ctor/&lt;module&gt;/<function>
     </td>
     <td>
       /groke/ctor/file/File
@@ -163,7 +163,7 @@ resources exposed by the platform.
       Objects that are exposed as a return value of a function invocation.
     </td>
     <td>
-      /groke/obj/<object-id>/<property>
+      /groke/obj/&lt;object-id&gt;/<property>
     </td>
     <td>
       /groke/obj/8327/write
@@ -175,7 +175,7 @@ resources exposed by the platform.
       This is analogous with the previous case.
     </td>
     <td>
-      /groke/func/<function-id>
+      /groke/func/&lt;function-id&gt;
     </td>
     <td>
       /groke/func/9284
