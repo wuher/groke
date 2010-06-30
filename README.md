@@ -42,6 +42,19 @@ HTTP requests to resources exposed by the server.
 
 
 
+Todo
+====
+
+- port the startup script to Windows
+- garbage collection
+- make the platform symmetric by utilizing Comet or WebSockets
+    - i.e. server should be able to call clients functions too
+- proper XMLHttpRequest
+- tests are not working
+- make client side wrapper cacheable
+
+
+
 History
 =======
 
@@ -92,19 +105,6 @@ narwhal/bin.
     git clone http://github.com/wuher/groke.git
     cd ../bin
     ln -s ../packages/groke/bin/groke
-
-
-
-Todo
-====
-
-- port the startup script to Windows
-- garbage collection
-- make the platform symmetric by utilizing Comet or WebSockets
-    - i.e. server should be able to call clients functions too
-- proper XMLHttpRequest
-- tests are not working
-- make client side wrapper cacheable
 
 
 
