@@ -69,15 +69,16 @@ code that was now part of the narwhal platform (only better tested and
 with more features) :) In the third version, the idea of presenting
 all the modules and function as hierarchy of resources was born. I
 fought to overcome the REST-RPC mismatch to great extent but
-eventually ended up with a compromise with which i wasn't too happy
+eventually ended up with a compromise which i wasn't too happy
 with.
 
 The third generation was free from all the Lively specific stuff but
 it was still using manually embedded Jetty so it was time to move away
-from that and employ Jack (loads of ugly code thrown away). Jack and
-JSGI have a really nice API for implementing middleware components and
-this was the major point of refactoring in the fourth version of
-Groke. Also, the REST approach was re-though and implemented.
+from that and employ [Jack][5] (loads of ugly Groke/Jetty code thrown
+away). Jack and JSGI have a really nice API for implementing
+middleware components and this was the major point of refactoring in
+the fourth version of Groke. Also, the REST approach was re-though and
+implemented.
 
 
 
@@ -219,3 +220,4 @@ to call the interface RESTful but something that is inspired by REST.
 [2]:http://lively.cs.tut.fi/
 [3]:http://lively.cs.tut.fi/people.html
 [4]:https://phobos.dev.java.net/
+[5]:http://github.com/280north/jack
