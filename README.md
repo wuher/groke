@@ -142,10 +142,10 @@ resources exposed by the platform.
        Functions provided by modules.
     </td>
     <td>
-       `/groke/module/&lt;module&gt;/<function>`
+       <code>/groke/module/&lt;module&gt;/<function></code>
     </td>
     <td>
-       `/groke/module/file/list`
+       <code>/groke/module/file/list</code>
     </td>
   </tr>
   <tr>
@@ -153,10 +153,10 @@ resources exposed by the platform.
       “Constructor” functions, i.e. functions invoked with the new operator.
     </td>
     <td>
-      `/groke/ctor/&lt;module&gt;/<function>`
+      <code>/groke/ctor/&lt;module&gt;/<function></code>
     </td>
     <td>
-      `/groke/ctor/file/File`
+      <code>/groke/ctor/file/File</code>
     </td>
   </tr>
   <tr>
@@ -164,10 +164,10 @@ resources exposed by the platform.
       Objects that are exposed as a return value of a function invocation.
     </td>
     <td>
-      `/groke/obj/&lt;object-id&gt;/<property>`
+      <code>/groke/obj/&lt;object-id&gt;/<property></code>
     </td>
     <td>
-      `/groke/obj/8327/write`
+      <code>/groke/obj/8327/write</code>
     </td>
   </tr>
   <tr>
@@ -176,10 +176,10 @@ resources exposed by the platform.
       This is analogous with the previous case.
     </td>
     <td>
-      `/groke/func/&lt;function-id&gt;`
+      <code>/groke/func/&lt;function-id&gt;</code>
     </td>
     <td>
-      `/groke/func/9284`
+      <code>/groke/func/9284</code>
     </td>
   </tr>
 </table>
