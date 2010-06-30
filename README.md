@@ -4,7 +4,7 @@ Groke
 Groke is a JavaScript server for the JavaScript client. It offers REST
 inspired approach into RPC services. Groke can be though of as a
 platform for hosting web applications that are implemented using
-JavaScript on both sides of the Iternet cloud. It simplifies the
+JavaScript on both sides of the Internet cloud. It simplifies the
 partitioning of the application by hiding the networking details when
 the client wants to use services offered by the server. The Groke
 server exposes all the modules and functions as a hierarchy of
@@ -51,8 +51,8 @@ the browser with minimum effort. It was first created to be used in
 conjunction with the [Sun Labs Lively Kernel][1] and the [Lively][2]
 (a research [group][3] that i'm part of) in general.
 
-During its short lifecycly, Groke has already gone through several
-generations and rewrites. The firts version was built on top of the
+During its short lifecycle, Groke has already gone through several
+generations and rewrites. The first version was built on top of the
 [Phobos][4] project and had many Lively specific feature in it. The
 next version was a bit more primitive in that it used Rhino and
 embedded Jetty was started from the JavaScript manually with
@@ -67,7 +67,7 @@ had already implemented very similar module system in my previous
 version of the platform. The hardest part was throwing away all that
 code that was now part of the narwhal platform (only better tested and
 with more features) :) In the third version, the idea of presenting
-all the modules and function as hierarcy of resources was born. I
+all the modules and function as hierarchy of resources was born. I
 fought to overcome the REST-RPC mismatch to great extent but
 eventually ended up with a compromise with which i wasn't too happy
 with.
@@ -120,7 +120,7 @@ to that URL with all the necessary parameters encoded as a JSON string
 in the body of the request. At the time of writing, the platform also
 has limited support for exposing objects and anonymous functions that
 may be created dynamically as part of return values from various
-operations. Table \ref{tbl:urls} summarizes the different types of
+operations. Following table summarizes the different types of
 resources exposed by the platform.
 
 
@@ -141,28 +141,62 @@ resources exposed by the platform.
        Functions provided by modules.
     </td>
     <td>
-       /groke/module/ <module>/<function>
+       /groke/module/<module>/<function>
     </td>
     <td>
-       /groke/module/ file/list
+       /groke/module/file/list
+    </td>
+  </tr>
+  <tr>
+    <td>
+      “Constructor” functions, i.e. functions invoked with the new operator.
+    </td>
+    <td>
+      /groke/ctor/<module>/<function>
+    </td>
+    <td>
+      /groke/ctor/file/File
+    </td>
+  </tr>
+  <tr>
+    <td>
+      Objects that are exposed as a return value of a function invocation.
+    </td>
+    <td>
+      /groke/obj/<object-id>/<property>
+    </td>
+    <td>
+      /groke/obj/8327/write
+    </td>
+  </tr>
+  <tr>
+    <td>
+      Functions exposed as a return values. 
+      This is analogous with the previous case.
+    </td>
+    <td>
+      /groke/func/<function-id>
+    </td>
+    <td>
+      /groke/func/9284
     </td>
   </tr>
 </table>
 
 
 
-The interface supports HTTP POST method only. Surely, this seems
-like a violation to the rules of REST. However, the platform cannot
-have any understanding about the modules and functions it exposes; it
-only knows that it serves a set of operations as resources that
-clients may invoke. Furthermore, these operations may require input
-parameters which, by REST convention, are POSTed to these
-operations. Modules and functions as resources also have a static
-nature in that they cannot be explicitly created, replaced or deleted
-using the methods of HTTP. Although, as suggested by the Table
-\ref{tbl:urls}, new objects and functions can be created and exposed
-dynamically but it is always more or less a side effect of a function
-invocation issued with HTTP's POST method.
+The interface supports HTTP POST method only. Surely, this seems like
+a violation to the rules of REST. However, the platform cannot have
+any understanding about the modules and functions it exposes; it only
+knows that it serves a set of operations as resources that clients may
+invoke. Furthermore, these operations may require input parameters
+which, by REST convention, are POSTed to these operations. Modules and
+functions as resources also have a static nature in that they cannot
+be explicitly created, replaced or deleted using the methods of
+HTTP. Although, as suggested by the above Table, new objects and
+functions can be created and exposed dynamically but it is always more
+or less a side effect of a function invocation issued with HTTP's POST
+method.
 
 Another controversy is presenting functions as resources. Albeit, the
 REST guidelines define that a resource can be anything, we do realize
@@ -170,7 +204,7 @@ that presenting functions as resources makes the interface seem more
 like an RPC type of service. In the REST world it is highly
 discouraged to use verbs as the names of resources and this is what
 inevitably happens when exposing functions as resources. On the other
-hand this is not the platform's choise, the names of the resources are
+hand this is not the platform's choice, the names of the resources are
 unknown to the platform when the system starts, everything is exposed
 dynamically and therefore also the names of the resources are chosen
 by the programmers providing the operations.
