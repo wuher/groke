@@ -53,6 +53,7 @@ narwhal/bin.
     cd ../bin
     ln -s ../packages/groke/bin/groke
 
+Groke depends on [Jack][5].
 
 
 Todo
@@ -173,7 +174,7 @@ resources exposed by the platform.
   </tr>
   <tr>
     <td>
-      Functions exposed as a return values. 
+      Functions exposed as a return values.
       This is analogous with the previous case.
     </td>
     <td>
